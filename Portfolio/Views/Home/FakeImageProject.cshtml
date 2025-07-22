@@ -1,0 +1,634 @@
+﻿@{
+    Layout = "_LayoutLan";
+    ViewData["Title"] = "MNIST Fake Image Generation";
+}
+
+@section styles {
+    <style>
+        .project-header {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .tech-badge {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .diagram-container {
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-card {
+            border-left: 3px solid #6c5ce7;
+            transition: all 0.3s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+        .nav-tabs .nav-link.active {
+            border-bottom: 3px solid #6c5ce7;
+            font-weight: 600;
+        }
+
+        .screenshot-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .screenshot-thumb:hover {
+                transform: scale(1.03);
+                border-color: #6c5ce7;
+            }
+
+        .architecture-section {
+            background-color: #f9fbfd;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .model-comparison {
+            border-left: 4px solid #6c5ce7;
+            padding-left: 1rem;
+        }
+
+        .generated-image-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .generated-image {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .generated-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+}
+
+<!-- Project Header -->
+<div class="project-header">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3 text-white">MNIST Fake Image Generation with GANs</h1>
+        <p class="lead mb-4">A Generative Adversarial Network (GAN) implementation that generates realistic handwritten digits by learning from the MNIST dataset.</p>
+        <div class="d-flex justify-content-center flex-wrap">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">TensorFlow</span>
+            <span class="tech-badge">Keras</span>
+            <span class="tech-badge">NumPy</span>
+            <span class="tech-badge">Matplotlib</span>
+            <span class="tech-badge">Deep Learning</span>
+            <span class="tech-badge">GANs</span>
+        </div>
+    </div>
+</div>
+
+<!-- Project Content -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Project Description -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Project Overview</h3>
+                    <p class="lead">This project implements a Generative Adversarial Network (GAN) to generate realistic handwritten digit images by learning from the MNIST dataset, demonstrating the power of deep learning in synthetic data generation.</p>
+
+                    <p>The GAN consists of two competing neural networks - a generator that creates fake images and a discriminator that tries to distinguish real from fake. Through adversarial training, the generator learns to produce increasingly convincing digit images while the discriminator becomes better at detection.</p>
+
+                    <div class="alert alert-primary mt-4">
+                        <i class="ri-lightbulb-flash-line me-2"></i>
+                        <strong>Key Innovation:</strong> The implementation uses a deep convolutional architecture for both generator and discriminator, with careful tuning of hyperparameters and training process to achieve stable convergence and high-quality image generation.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">GAN Architecture</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/gan_architecture.png")" alt="GAN Architecture" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 1: The adversarial training process between Generator and Discriminator networks</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Technical Highlights</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-artboard-line text-primary me-2"></i> Generator Network</h5>
+                                    <ul class="text-muted">
+                                        <li>Input: 100-dim random noise vector</li>
+                                        <li>Architecture: Dense → Reshape → Conv2DTranspose layers</li>
+                                        <li>Output: 28×28 grayscale image</li>
+                                        <li>Uses LeakyReLU activation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-discriminator-line text-primary me-2"></i> Discriminator Network</h5>
+                                    <ul class="text-muted">
+                                        <li>Input: 28×28 grayscale image</li>
+                                        <li>Architecture: Conv2D → LeakyReLU → Dropout</li>
+                                        <li>Output: Binary classification (real/fake)</li>
+                                        <li>Uses sigmoid activation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-settings-3-line text-primary me-2"></i> Training Process</h5>
+                                    <ul class="text-muted">
+                                        <li>Batch size: 256</li>
+                                        <li>Epochs: 50</li>
+                                        <li>Optimizer: Adam (lr=1e-4)</li>
+                                        <li>Loss: Binary cross-entropy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-stack-line text-primary me-2"></i> Technologies</h5>
+                                    <ul class="text-muted">
+                                        <li>TensorFlow/Keras for model building</li>
+                                        <li>NumPy for data manipulation</li>
+                                        <li>Matplotlib for visualization</li>
+                                        <li>Google Colab for GPU acceleration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Training Results</h3>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-number-1"></i> Generator Loss</h5>
+                                <h2>1.24</h2>
+                                <small>Final epoch</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-number-2"></i> Discriminator Loss</h5>
+                                <h2>0.68</h2>
+                                <small>Final epoch</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-time-line"></i> Training Time</h5>
+                                <h2>~2 hours</h2>
+                                <small>On Colab GPU</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-comparison mb-4">
+                        <h5 class="fw-bold">Training Dynamics</h5>
+                        <p>The adversarial training process showed:</p>
+                        <ul>
+                            <li><strong>Initial Phase:</strong> Discriminator quickly learns to distinguish real/fake</li>
+                            <li><strong>Middle Phase:</strong> Generator improves quality as discriminator gets stronger</li>
+                            <li><strong>Final Phase:</strong> Equilibrium where both networks improve together</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">Generated Image Samples</h5>
+                    <div class="generated-image-grid">
+                        <div class="generated-image">
+                            <img src="@Url.Content("~/images/Fake Images.png")" class="img-fluid">
+                        </div>
+                        <div class="generated-image">
+                            <img src="@Url.Content("~/images/generated_sample2.png")" class="img-fluid">
+                        </div>
+                        <div class="generated-image">
+                            <img src="@Url.Content("~/images/generated_sample3.png")" class="img-fluid">
+                        </div>
+                        <div class="generated-image">
+                            <img src="@Url.Content("~/images/generated_sample4.png")" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 2: Sample generated images after 50 epochs of training</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Links -->
+            <div class="card mb-4 border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Project Links</h5>
+                    <a href="https://github.com/yourusername/mnist-gan" class="btn btn-primary w-100 mb-3" target="_blank">
+                        <i class="ri-github-fill me-2"></i> View Source Code
+                    </a>
+                    <a href="#screenshots" class="btn btn-outline-primary w-100 mb-3">
+                        <i class="ri-image-line me-2"></i> View Visualizations
+                    </a>
+                    <a href="@Url.Content("~/doc/MNIST Fake Image Generation with GANs.ipynb")" class="btn btn-light w-100 mb-3" download>
+                        <i class="ri-file-download-line me-2"></i> Download Jupyter File
+                    </a>
+
+                    <hr class="my-3">
+
+                    <div class="project-details mt-3 p-3 bg-light rounded">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2">📊 Project Details</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <span class="me-2 fw-semibold">Status:</span>
+                                <span class="badge bg-success">Completed</span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Dataset:</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary">
+                                    60,000 MNIST images
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Image Size:</span>
+                                <span class="badge bg-info bg-opacity-10 text-info">
+                                    28×28 grayscale
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Framework:</span>
+                                <span class="badge bg-dark text-white">
+                                    TensorFlow 2.x
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Technology Stack</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Core Libraries</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">TensorFlow</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Keras</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">NumPy</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Matplotlib</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Model Architecture</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">GANs</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Conv2D</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Conv2DTranspose</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">LeakyReLU</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Training</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">Adam Optimizer</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Binary Crossentropy</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">GPU Acceleration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dataset Info -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Dataset Information</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">MNIST Dataset</h6>
+                        <ul class="text-muted small">
+                            <li>60,000 training images</li>
+                            <li>10,000 test images</li>
+                            <li>10 classes (digits 0-9)</li>
+                            <li>28×28 pixel grayscale</li>
+                            <li>Normalized to [-1, 1] range</li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Preprocessing</h6>
+                        <p class="text-muted small">Images reshaped to (28, 28, 1) and normalized</p>
+                    </div>
+                    <div class="alert alert-warning small">
+                        <i class="ri-alert-line me-1"></i> Dataset balanced with equal representation of all digits
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualizations Section -->
+    <div class="row mt-5" id="screenshots">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">Training Visualizations</h3>
+
+                    <ul class="nav nav-tabs mb-4" id="visualizationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="loss-tab" data-bs-toggle="tab" data-bs-target="#loss" type="button" role="tab">Loss Curves</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="progression-tab" data-bs-toggle="tab" data-bs-target="#progression" type="button" role="tab">Image Progression</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="architecture-tab" data-bs-toggle="tab" data-bs-target="#architecture" type="button" role="tab">Model Details</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="visualizationTabsContent">
+                        <div class="tab-pane fade show active" id="loss" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/Loss1.jpg")" alt="Loss Curves" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>The loss curves show the adversarial training dynamics between generator and discriminator. The generator loss decreases as it learns to produce more convincing images, while the discriminator maintains reasonable accuracy in distinguishing real from fake.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="progression" role="tabpanel">
+                            <div class="diagram-container row">
+                                <div class="col-md-2 col-6 mb-3">
+                                    <img src="@Url.Content("~/images/First Epoch.png")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                                <div class="col-md-2 col-6 mb-3">
+                                    <img src="@Url.Content("~/images/10th epoch.png")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                                <div class="col-md-2 col-6 mb-3">
+                                    <img src="@Url.Content("~/images/20th epoch.png")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                                <div class="col-md-2 col-6 mb-3">
+                                    <img src="@Url.Content("~/images/30th epoch.png")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                                <div class="col-md-2 col-6 mb-3">
+                                    <img src="@Url.Content("~/images/40th epoch.png")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                                <div class="col-md-2 col-6 mb-3">
+                                    <img src="@Url.Content("~/images/50th epoch.png")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>Image quality progression over training epochs shows the generator's improvement from random noise (epoch 1) to recognizable digits (epoch 50). The model learns to capture the essential features of handwritten digits.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="architecture" role="tabpanel">
+                            <div class="diagram-container row">
+                                <div class="col-md-6 col-6 mb-3">
+                                    <h3>Generator Architecture</h3>
+                                    <img src="@Url.Content("~/images/Generator Architecture.jpg")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                                <div class="col-md-6 col-6 mb-3">
+                                    <h3>Discriminator Architecture</h3>
+                                    <img src="@Url.Content("~/images/Discriminator Architecture.jpg")" alt="Training Progression" class="img-fluid">
+
+                                </div>
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>The generator uses transposed convolutions to upsample from random noise to 28×28 images, while the discriminator uses strided convolutions to classify images as real or fake. Both networks use batch normalization and LeakyReLU activations.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Loss2.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="0">
+                        </div>
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Loss3.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="1">
+                        </div>
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Loss4.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Challenges & Solutions -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">Technical Challenges & Solutions</h3>
+                    <div class="accordion" id="challengesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#challenge1">
+                                    Mode Collapse
+                                </button>
+                            </h2>
+                            <div id="challenge1" class="accordion-collapse collapse show" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>The generator would sometimes produce limited varieties of digits (e.g., only generating 1s and 7s) instead of the full range of MNIST digits.</p>
+                                    <p><strong>Solution:</strong> Implemented techniques like feature matching, minibatch discrimination, and careful tuning of learning rates to encourage diversity in generated samples.</p>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Generator learned to produce all 10 digit classes with good variety.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge2">
+                                    Training Instability
+                                </button>
+                            </h2>
+                            <div id="challenge2" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>GAN training is notoriously unstable, with common issues like vanishing gradients or one network overpowering the other.</p>
+                                    <p><strong>Solution:</strong> Used techniques like label smoothing, gradient penalty, and balanced training schedule to maintain stable training dynamics.</p>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Achieved consistent training with both networks improving together.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge3">
+                                    Image Quality
+                                </button>
+                            </h2>
+                            <div id="challenge3" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Early generated images were blurry and lacked sharp features of real handwritten digits.</p>
+                                    <p><strong>Solution:</strong> Improved architecture with deeper networks, batch normalization, and appropriate activation functions to enhance image quality.</p>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Generated digits became sharper and more realistic over training.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Key Code Implementation</h3>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Generator Model Definition</h5>
+                        <pre><code class="language-python">def build_generator():
+    model = tf.keras.Sequential([
+        layers.Dense(7*7*256, use_bias=False, input_shape=(100,)),
+        layers.BatchNormalization(),
+        layers.LeakyReLU(alpha=0.2),
+        layers.Reshape((7, 7, 256)),
+        layers.Conv2DTranspose(128, (5,5), strides=(1,1), 
+                              padding='same', use_bias=False),
+        layers.BatchNormalization(),
+        layers.LeakyReLU(alpha=0.2),
+        layers.Conv2DTranspose(64, (5,5), strides=(2,2), 
+                              padding='same', use_bias=False),
+        layers.BatchNormalization(),
+        layers.LeakyReLU(alpha=0.2),
+        layers.Conv2DTranspose(1, (5,5), strides=(2,2), 
+                              padding='same', use_bias=False, 
+                              activation='tanh')
+    ])
+    return model</code></pre>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Discriminator Model Definition</h5>
+                        <pre><code class="language-python">def build_discriminator():
+    model = tf.keras.Sequential([
+        layers.Conv2D(64, (5,5), strides=(2,2), 
+                     padding='same', input_shape=[28,28,1]),
+        layers.LeakyReLU(alpha=0.2),
+        layers.Dropout(0.3),
+        layers.Conv2D(128, (5,5), strides=(2,2), padding='same'),
+        layers.LeakyReLU(alpha=0.2),
+        layers.Dropout(0.3),
+        layers.Flatten(),
+        layers.Dense(1, activation='sigmoid')
+    ])
+    return model</code></pre>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Training Loop</h5>
+                        <pre><code class="language-python">tf.function
+def train_step(images):
+    noise = tf.random.normal([BATCH_SIZE, noise_dim])
+
+    with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
+        generated_images = generator(noise, training=True)
+
+        real_output = discriminator(images, training=True)
+        fake_output = discriminator(generated_images, training=True)
+
+        gen_loss = generator_loss(fake_output)
+        disc_loss = discriminator_loss(real_output, fake_output)
+
+    gradients_of_generator = gen_tape.gradient(gen_loss, 
+                                             generator.trainable_variables)
+    gradients_of_discriminator = disc_tape.gradient(disc_loss, 
+                                                  discriminator.trainable_variables)
+
+    generator_optimizer.apply_gradients(zip(gradients_of_generator, 
+                                          generator.trainable_variables))
+    discriminator_optimizer.apply_gradients(zip(gradients_of_discriminator, 
+                                              discriminator.trainable_variables))</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        // Make visualization thumbnails clickable to switch tabs
+        document.querySelectorAll('.screenshot-thumb').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const tabEl = document.querySelector(this.getAttribute('data-bs-target'));
+                const tab = new bootstrap.Tab(this);
+                tab.show();
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Syntax highlighting for code blocks
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            }
+        });
+    </script>
+}

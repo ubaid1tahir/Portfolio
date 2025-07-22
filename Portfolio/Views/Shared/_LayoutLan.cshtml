@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="ltr" data-nav-layout="horizontal" data-nav-style="menu-click" data-menu-position="fixed" data-theme-mode="light">
+
+    <head>
+
+        <!-- Meta Data -->
+		<meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="Description" content="ASP.NET MVC 5 Bootstrap 5 Responsive Admin Web Dashboard Template">
+        <meta name="Author" content="Spruko Technologies Private Limited">
+        <meta name="keywords" content="admin panel template, admin dashboard bootstrap, bootstrap admin theme, asp.net mvc, bootstrap admin template, dotnet core, asp dotnet, admin dashboard template, template dashboard, asp net framework, admin template bootstrap, bootstrap admin, asp net core">
+
+        <!-- TITLE -->
+		<title>@ViewData["Title"]YNEX - ASP.NET MVC 5 Bootstrap 5 Premium Admin & Dashboard Template </title>
+
+        <!-- FAVICON -->
+        <link rel="icon" href="@Url.Content("~/assets/images/brand-logos/favicon.ico")" type="image/x-icon">
+
+        <!-- BOOTSTRAP CSS -->
+	    <link  id="style" href="@Url.Content("~/assets/libs/bootstrap/css/bootstrap.min.css")" rel="stylesheet">
+
+        <!-- STYLES CSS -->
+        <link href="@Url.Content("~/assets/css/styles.css")" rel="stylesheet">
+
+        <!-- ICONS CSS -->
+        <link href="@Url.Content("~/assets/CSS/icons.css")" rel="stylesheet">
+        
+        <partial name="~/Views/Shared/Layouts/landing/_styles.cshtml">
+
+        @await RenderSectionAsync("Styles", required: false)
+
+	</head>
+
+	<body class="landing-body">
+
+        <!-- SWITCHER -->
+
+        <partial name="~/Views/Shared/Layouts/landing/_switcher.cshtml">
+
+        <!-- END SWITCHER -->
+
+        <!-- PAGE -->
+        <div class="landing-page-wrapper">
+
+            <!-- HEADER -->
+
+            <partial name="~/Views/Shared/Layouts/landing/_header.cshtml">
+
+            <!-- END HEADER -->
+
+            <!-- SIDEBAR -->
+
+            <partial name="~/Views/Shared/Layouts/landing/_sidebar.cshtml">
+
+            <!-- END SIDEBAR -->
+
+            <!-- MAIN-CONTENT -->
+
+            <div class="main-content landing-main">
+
+                @RenderBody()
+
+
+                    <!-- FOOTER -->
+                    
+                    <partial name="~/Views/Shared/Layouts/landing/_footer.cshtml">
+
+                    <!-- END FOOTER -->
+
+            </div> 
+            <!-- END MAIN-CONTENT -->
+
+		</div>
+        <!-- END PAGE-->
+
+        <!-- SCRIPTS -->
+
+        <partial name="~/Views/Shared/Layouts/landing/_scripts.cshtml">
+
+        @await RenderSectionAsync("Scripts", required: false)
+
+        <!-- STICKY JS -->
+		<script src="@Url.Content("~/assets/js/sticky.js")"></script>
+
+        <!-- END SCRIPTS -->
+
+	</body>
+</html>

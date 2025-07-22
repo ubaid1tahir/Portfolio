@@ -1,0 +1,561 @@
+﻿@{
+    Layout = "_LayoutLan";
+    ViewData["Title"] = "Project Details";
+}
+
+@section styles {
+    <style>
+        .project-header {
+            background-color: #111c43;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .tech-badge {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .diagram-container {
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-card {
+            border-left: 3px solid #3e80eb;
+            transition: all 0.3s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+        .nav-tabs .nav-link.active {
+            border-bottom: 3px solid #3e80eb;
+            font-weight: 600;
+        }
+
+        .screenshot-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .screenshot-thumb:hover {
+                transform: scale(1.03);
+                border-color: #3e80eb;
+            }
+
+        .architecture-section {
+            background-color: #f9fbfd;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+    </style>
+}
+
+<!-- Project Header -->
+<div class="project-header">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3 text-white">AI-Powered Learning Management System</h1>
+        <p class="lead mb-4">An intelligent LMS that uses AI to auto-generate course content, quizzes, and personalized learning paths for students.</p>
+        <div class="d-flex justify-content-center flex-wrap">
+            <span class="tech-badge">ASP.NET Core</span>
+            <span class="tech-badge">LangChain</span>
+            <span class="tech-badge">Flask</span>
+            <span class="tech-badge">FAISS</span>
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">Entity Framework</span>
+        </div>
+    </div>
+</div>
+<!-- Project Content -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Project Description -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">About This Project</h3>
+                    <p class="lead">This AI-powered Learning Management System (LMS) is designed to streamline academic workflows by providing students, teachers, and administrators with a unified platform to manage courses, assignments, and learning materials.</p>
+
+                    <p>The system supports secure login, role-based access (Admin, Teacher, Student), assignment dashboards with timers, AI-powered quiz generation, and built-in communication between users. It also includes a future-ready AI course recommendation module and a live calendar view to track upcoming deadlines.</p>
+
+                    <div class="alert alert-primary mt-4">
+                        <i class="ri-lightbulb-flash-line me-2"></i>
+                        <strong>Key Innovation:</strong> The integration of AI for auto-generating quizzes and personalized course suggestions sets this LMS apart, enhancing learning engagement and automation within the education sector.
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Architecture Diagram -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">System Architecture</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/System Architecture.png")" alt="System Architecture" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 1: High-level architecture of the AI-Powered LMS System</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Core Features</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-user-settings-line text-primary me-2"></i> Role-Based Dashboards</h5>
+                                    <p class="text-muted">Separate interfaces and controls for Admins, Teachers, and Students.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-question-answer-line text-primary me-2"></i> AI Quiz Generator</h5>
+                                    <p class="text-muted">Teachers can generate intelligent quizzes using OpenAI integration.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-time-line text-primary me-2"></i> Assignment Tracker</h5>
+                                    <p class="text-muted">Students view, submit, and track assignments with countdown timers.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-calendar-event-line text-primary me-2"></i> Integrated Calendar</h5>
+                                    <p class="text-muted">Visual schedule for upcoming deadlines, assignments, and exams.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-mail-send-line text-primary me-2"></i> Automated Emails</h5>
+                                    <p class="text-muted">Sends welcome, password reset, and registration emails to users.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-chat-3-line text-primary me-2"></i> Section-Based Chat</h5>
+                                    <p class="text-muted">In-app chat system between students and teachers within sections.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Database Schema -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Database Schema</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/ERD.jpg")" alt="ERD Diagram" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 2: Entity Relationship Diagram showing the document storage and user management schema</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Links -->
+            <div class="card mb-4 border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Project Links</h5>
+                    <a href="https://legaldocai.example.com" class="btn btn-primary w-100 mb-3" target="_blank">
+                        <i class="ri-external-link-line me-2"></i> Live Demo
+                    </a>
+                    <a href="https://github.com/yourusername/legal-rag-chatbot" class="btn btn-outline-primary w-100 mb-3" target="_blank">
+                        <i class="ri-github-fill me-2"></i> View Source Code
+                    </a>
+                    <a href="#screenshots" class="btn btn-light w-100 mb-3">
+                        <i class="ri-image-line me-2"></i> View Screenshots
+                    </a>
+
+                    <hr class="my-3">
+
+                    <div class="project-details mt-3 p-3 bg-light rounded">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2">🚀 Project Details</h5>
+                        <ul class="list-unstyled">
+                            <!-- Status with dual badges -->
+                            <li class="mb-3 d-flex align-items-center">
+                                <span class="me-2 fw-semibold">Status:</span>
+                                <span class="badge bg-success me-2">Completed</span>
+                                <span class="badge bg-secondary">Awaiting Deployment</span>
+                            </li>
+
+                            <!-- Client with icon -->
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Client:</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary">
+                                    <i class="fas fa-university me-1"></i> Educational Institution
+                                </span>
+                            </li>
+
+                            <!-- Duration with progress style -->
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Duration:</span>
+                                <span class="badge bg-info bg-opacity-10 text-info">
+                                    <i class="fas fa-clock me-1"></i> 6 months
+                                </span>
+                            </li>
+
+                            <!-- Solo developer highlight -->
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Team:</span>
+                                <span class="badge bg-warning bg-opacity-15 text-dark">
+                                    <i class="fas fa-user-shield me-1"></i> Solo Developer
+                                </span>
+                            </li>
+
+                            <!-- Digital Ocean deployment -->
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Hosting:</span>
+                                <span class="badge bg-dark text-white">
+                                    <i class="fab fa-digital-ocean me-1"></i> Digital Ocean Ready
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Technology Stack</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Backend</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">ASP.NET Core MVC</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">LangChain</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Flask</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Frontend</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">Bootstrap v5</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">YNEX Template</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Razor Syntax</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Infrastructure</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">SQL Server</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Digital Ocean</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">REST API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">View Documentation</h5>
+                    <p class="text-muted">
+                        Download the full LMS system documentation in PDF format, including features, setup instructions, and architecture overview.
+                    </p>
+                    <a href="~/doc/LMS Documentation Final.pdf" class="btn btn-sm btn-primary" download>
+                        <i class="ri-file-download-line me-1"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <!-- Screenshots Section -->
+    <div class="row mt-5" id="screenshots">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">User Interface</h3>
+
+                    <ul class="nav nav-tabs mb-4" id="screenshotTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#dashboard" type="button" role="tab">Dashboard</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="chat-tab" data-bs-toggle="tab" data-bs-target="#chat" type="button" role="tab">Technical Diagrams</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="analysis-tab" data-bs-toggle="tab" data-bs-target="#analysis" type="button" role="tab">Video Presentation</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="screenshotTabsContent">
+                        <div class="tab-pane fade show active" id="dashboard" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/Admin Dashboard.jpg")" alt="Dashboard" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="chat" role="tabpanel">
+                            <div class="row">
+                                <!-- Ensure this is a flex container -->
+                                <div class="col-md-6 diagram-container">
+                                    <!-- Changed to col-md-6 for equal width -->
+                                    <img src="@Url.Content("~/images/AI Quiz Generation Flow.jpg")" alt="Chat Interface" class="img-fluid">
+                                </div>
+                                <div class="col-md-6 diagram-container">
+                                    <img src="@Url.Content("~/images/Student Registration.jpg")" alt="Chat Interface" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="analysis" role="tabpanel">
+                            <div class="diagram-container ratio ratio-16x9">
+                                <!-- Bootstrap aspect ratio helper -->
+                                <video controls class="img-fluid" style="object-fit: cover;">
+                                    <source src="@Url.Content("~/images/AI Quiz Generation.mp4")" type="video/mp4">
+                                    Your browser does not support HTML5 video.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Course Detail.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#screenshotTabs" data-bs-slide-to="0">
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Student Chat AI.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#screenshotTabs" data-bs-slide-to="1">
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Student AI.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#screenshotTabs" data-bs-slide-to="2">
+                        </div>
+                        <div class="col-md-3 col-6 mb-3">
+                            <img src="@Url.Content("~/images/RAG Image.jpg")" class="img-thumbnail screenshot-thumb" data-bs-target="#screenshotTabs" data-bs-slide-to="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Class Diagram Section -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Core Class Diagram</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/Class Diagram.jpg")" alt="Class Diagram" class="img-fluid">
+                    </div>
+                    <div class="mt-3">
+                        <h5 class="fw-semibold">Key Classes:</h5>
+                        <ul class="list-unstyled">
+                            <!-- User Management Group -->
+                            <li class="mb-2">
+                                <strong>User System</strong>
+                                <ul>
+                                    <li><strong>ApplicationUser</strong> - Base authentication (Id, Email, Password)</li>
+                                    <li><strong>Student</strong> - Academic records (roll no, CCPA)</li>
+                                    <li><strong>Teacher</strong> - Course management (Course by, Student score)</li>
+                                </ul>
+                            </li>
+
+                            <!-- Course Session Group -->
+                            <li class="mb-2">
+                                <strong>Course System</strong>
+                                <ul>
+                                    <li><strong>Session</strong> - Class sessions (Name, CourseOverview)</li>
+                                    <li><strong>CourseHistory</strong> - Session tracking (Last updatetime)</li>
+                                </ul>
+                            </li>
+
+                            <!-- Quiz System Group -->
+                            <li class="mb-2">
+                                <strong>Quiz System</strong>
+                                <ul>
+                                    <li><strong>Quiz</strong> - Master quiz (Tyler, Quiz type)</li>
+                                    <li><strong>QuizQuestion</strong> - Questions & answers (QuestionText, Marks obtain)</li>
+                                    <li><strong>QuizOption</strong> - Answer choices (Option, Item)</li>
+                                </ul>
+                            </li>
+
+                            <!-- Assignment Group -->
+                            <li class="mb-2">
+                                <strong>Assignment System</strong>
+                                <ul>
+                                    <li><strong>Assignment</strong> - Task details (name, End date/time)</li>
+                                    <li><strong>AssignmentStudent</strong> - Submissions (Submit time, obtain marks)</li>
+                                </ul>
+                            </li>
+
+                            <!-- Chat Group -->
+                            <li>
+                                <strong>Communication</strong>
+                                <ul>
+                                    <li><strong>ChatMessenger</strong> - Messaging (MSC, timestep)</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="row mt-5">
+            <div class="col-12 mb-4">
+
+                <div class="card feature-card h-100">
+                    <div class="card-body">
+                        <h5>
+                            <i class="ri-file-download-line text-primary me-2"></i> View Documentation
+                        </h5>
+                        <p class="text-muted">
+                            Download the full LMS system documentation in PDF format.
+                        </p>
+                        <a href="/docs/LMS Documentation Final.pdf" class="btn btn-sm btn-primary mt-2" download>
+                            Download PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    <!-- Challenges & Solutions -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">Challenges & Solutions</h3>
+                    <div class="accordion" id="challengesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#challenge1">
+                                    Role-Based Access & Permissions
+                                </button>
+                            </h2>
+                            <div id="challenge1" class="accordion-collapse collapse show" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Managing strict access control for Admin, Teacher, and Student roles was critical. Our solution included:</p>
+                                    <ul>
+                                        <li>Using ASP.NET Identity for secure authentication and role management</li>
+                                        <li>Custom authorization attributes to protect sensitive routes</li>
+                                        <li>Dynamic UI rendering based on user roles</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Seamless, secure multi-role access with clear navigation
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge2">
+                                    AI Quiz Generation Integration
+                                </button>
+                            </h2>
+                            <div id="challenge2" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Incorporating OpenAI for dynamic quiz creation required balancing performance and response quality. We addressed this by:</p>
+                                    <ul>
+                                        <li>Using asynchronous calls to OpenAI APIs</li>
+                                        <li>Implementing content validation for AI output</li>
+                                        <li>Limiting API usage to prevent quota exhaustion</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Reliable AI quizzes with improved generation accuracy and speed
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge3">
+                                    Real-Time Assignment Tracking
+                                </button>
+                            </h2>
+                            <div id="challenge3" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>We needed a way for students to track assignment deadlines with clear visibility. Our approach:</p>
+                                    <ul>
+                                        <li>Built a dashboard with countdown timers for each assignment</li>
+                                        <li>Used server-side timers and status flags to reflect submission status</li>
+                                        <li>Integrated a calendar view for better visualization</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Increased assignment completion rate and reduced late submissions
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge4">
+                                    Email-Based Registration & Reset
+                                </button>
+                            </h2>
+                            <div id="challenge4" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Ensuring secure and user-friendly registration required email-based workflows. Our solution:</p>
+                                    <ul>
+                                        <li>Generated registration tokens with expiration for teachers and students</li>
+                                        <li>Sent automated emails with password setup links</li>
+                                        <li>Used SMTP with secure retry and fallback handling</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Smooth onboarding with reduced manual account setup time
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> <!-- End accordion -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section scripts {
+    <script>
+        // Make screenshot thumbnails clickable to switch tabs
+        document.querySelectorAll('.screenshot-thumb').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const tabEl = document.querySelector(this.getAttribute('data-bs-target'));
+                const tab = new bootstrap.Tab(this);
+                tab.show();
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+}

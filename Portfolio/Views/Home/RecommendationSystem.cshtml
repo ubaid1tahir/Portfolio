@@ -1,0 +1,693 @@
+﻿@{
+    Layout = "_LayoutLan";
+    ViewData["Title"] = "Movie Recommendation System";
+}
+
+@section styles {
+    <style>
+        .project-header {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .tech-badge {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .diagram-container {
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-card {
+            border-left: 3px solid #6c5ce7;
+            transition: all 0.3s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+        .nav-tabs .nav-link.active {
+            border-bottom: 3px solid #6c5ce7;
+            font-weight: 600;
+        }
+
+        .screenshot-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .screenshot-thumb:hover {
+                transform: scale(1.03);
+                border-color: #6c5ce7;
+            }
+
+        .architecture-section {
+            background-color: #f9fbfd;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .model-comparison {
+            border-left: 4px solid #6c5ce7;
+            padding-left: 1rem;
+        }
+
+        .recommendation-example {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+    </style>
+}
+
+<!-- Project Header -->
+<div class="project-header">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3 text-white">Movie Recommendation System</h1>
+        <p class="lead mb-4">A content-based recommendation engine that suggests similar movies based on cosine similarity of movie features.</p>
+        <div class="d-flex justify-content-center flex-wrap">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">Pandas</span>
+            <span class="tech-badge">NumPy</span>
+            <span class="tech-badge">Scikit-learn</span>
+            <span class="tech-badge">NLTK</span>
+            <span class="tech-badge">TMDB Dataset</span>
+        </div>
+    </div>
+</div>
+
+<!-- Project Content -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Project Description -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Project Overview</h3>
+                    <p class="lead">This project implements a content-based movie recommendation system that suggests similar movies based on their features like genres, keywords, cast, crew, and overview.</p>
+
+                    <p>The system analyzes the TMDB 5000 movies dataset, processes the textual features using NLP techniques, and computes cosine similarity between movies to find the most similar ones. It demonstrates how machine learning can power personalized recommendations.</p>
+
+                    <div class="alert alert-primary mt-4">
+                        <i class="ri-lightbulb-flash-line me-2"></i>
+                        <strong>Key Innovation:</strong> The system combines multiple features (genres, keywords, cast, crew, overview) into a single "tags" vector for each movie and uses stemming to improve recommendation accuracy.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Diagram -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">System Architecture</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/recommendation_architecture.png")" alt="Recommendation Architecture" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 1: The content-based recommendation system workflow</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Technical Highlights</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-database-line text-primary me-2"></i> Data Processing</h5>
+                                    <ul class="text-muted">
+                                        <li>Merged TMDB movies and credits datasets</li>
+                                        <li>Extracted relevant features (genres, keywords, etc.)</li>
+                                        <li>Handled missing values</li>
+                                        <li>Processed JSON-like columns</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-file-text-line text-primary me-2"></i> Text Processing</h5>
+                                    <ul class="text-muted">
+                                        <li>Converted JSON to lists of features</li>
+                                        <li>Combined multiple features into tags</li>
+                                        <li>Applied stemming with Porter Stemmer</li>
+                                        <li>Lowercased and removed spaces</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-calculator-line text-primary me-2"></i> Vectorization</h5>
+                                    <ul class="text-muted">
+                                        <li>CountVectorizer with 5000 features</li>
+                                        <li>English stop words removal</li>
+                                        <li>Bag-of-words representation</li>
+                                        <li>Sparse matrix conversion</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-stack-line text-primary me-2"></i> Recommendation</h5>
+                                    <ul class="text-muted">
+                                        <li>Cosine similarity calculation</li>
+                                        <li>Top 5 similar movies</li>
+                                        <li>Content-based filtering</li>
+                                        <li>Fast lookup with movie indices</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">System Results</h3>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-movie-2-line"></i> Movies Processed</h5>
+                                <h2>5,000+</h2>
+                                <small>From TMDB dataset</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-file-list-2-line"></i> Features Combined</h5>
+                                <h2>5</h2>
+                                <small>Genres, keywords, etc.</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-time-line"></i> Processing Time</h5>
+                                <h2>&lt;1 min</h2>
+                                <small>On standard hardware</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-comparison mb-4">
+                        <h5 class="fw-bold">Recommendation Quality</h5>
+                        <p>The system provides:</p>
+                        <ul>
+                            <li><strong>Genre-based similarity:</strong> Movies with similar genres</li>
+                            <li><strong>Content-based similarity:</strong> Movies with similar plots</li>
+                            <li><strong>Cast/crew similarity:</strong> Movies with same actors/directors</li>
+                            <li><strong>Keyword matching:</strong> Movies with similar themes</li>
+                        </ul>
+                    </div>
+
+                    <h5 class="fw-bold mb-3">Recommendation Examples</h5>
+
+                    <div class="recommendation-example">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h6>Input Movie: The Dark Knight</h6>
+                                <p class="text-muted">Recommended Movies:</p>
+                                <ol>
+                                    <li>The Dark Knight Rises</li>
+                                    <li>Batman Begins</li>
+                                    <li>Batman v Superman: Dawn of Justice</li>
+                                    <li>Man of Steel</li>
+                                    <li>Watchmen</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-example">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h6>Input Movie: Inception</h6>
+                                <p class="text-muted">Recommended Movies:</p>
+                                <ol>
+                                    <li>The Matrix</li>
+                                    <li>Shutter Island</li>
+                                    <li>Interstellar</li>
+                                    <li>The Prestige</li>
+                                    <li>Source Code</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-example">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h6>Input Movie: Toy Story</h6>
+                                <p class="text-muted">Recommended Movies:</p>
+                                <ol>
+                                    <li>Toy Story 2</li>
+                                    <li>Toy Story 3</li>
+                                    <li>Monsters, Inc.</li>
+                                    <li>Finding Nemo</li>
+                                    <li>Up</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 2: Sample recommendations showing the system's capability</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Links -->
+            <div class="card mb-4 border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Project Links</h5>
+                    <a href="https://colab.research.google.com/drive/1f_WJiDnd6gnx2LStJTC8EF5sr3eej7KB?usp=sharing" class="btn btn-primary w-100 mb-3" target="_blank">
+                        <i class="ri-github-fill me-2"></i> View Google Colab Notebook
+                    </a>
+                    <a href="#screenshots" class="btn btn-outline-primary w-100 mb-3">
+                        <i class="ri-image-line me-2"></i> View Visualizations
+                    </a>
+                    <a href="@Url.Content("~/doc/Movie_Recommendation_System.ipynb")" class="btn btn-light w-100 mb-3" download>
+                        <i class="ri-file-download-line me-2"></i> Download Jupyter File
+                    </a>
+
+                    <hr class="my-3">
+
+                    <div class="project-details mt-3 p-3 bg-light rounded">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2">📊 Project Details</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <span class="me-2 fw-semibold">Status:</span>
+                                <span class="badge bg-success">Completed</span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Dataset:</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary">
+                                    TMDB 5000 Movies
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Features:</span>
+                                <span class="badge bg-info bg-opacity-10 text-info">
+                                    Genres, Keywords
+                                </span>
+                                <span class="badge bg-info bg-opacity-10 text-info">
+                                    Cast, Crew, Overview
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Algorithm:</span>
+                                <span class="badge bg-dark text-white">
+                                    Cosine Similarity
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Technology Stack</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Core Libraries</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">Pandas</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">NumPy</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Scikit-learn</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">NLTK</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Data Processing</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">JSON Parsing</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Text Cleaning</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Feature Combination</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">NLP</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">CountVectorizer</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Porter Stemmer</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Stop Words</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dataset Info -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Dataset Information</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">TMDB 5000 Dataset</h6>
+                        <ul class="text-muted small">
+                            <li>5000+ movies with detailed metadata</li>
+                            <li>Genres, keywords, cast, crew information</li>
+                            <li>Movie overviews/plot summaries</li>
+                            <li>Ratings and popularity metrics</li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Features Used</h6>
+                        <p class="text-muted small">Genres, keywords, overview, cast (top 3), director</p>
+                    </div>
+                    <div class="alert alert-warning small">
+                        <i class="ri-alert-line me-1"></i> JSON-like columns were parsed to extract relevant features
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualizations Section -->
+    <div class="row mt-5" id="screenshots">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">System Visualizations</h3>
+
+                    <ul class="nav nav-tabs mb-4" id="visualizationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="data-tab" data-bs-toggle="tab" data-bs-target="#data" type="button" role="tab">Data Processing</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="similarity-tab" data-bs-toggle="tab" data-bs-target="#similarity" type="button" role="tab">Similarity Matrix</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="output-tab" data-bs-toggle="tab" data-bs-target="#output" type="button" role="tab">Recommendation Output</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="output-tab" data-bs-toggle="tab" data-bs-target="#demonstrate" type="button" role="tab">Video Demonstration</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="visualizationTabsContent">
+                        <div class="tab-pane fade show active" id="data" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/synthetic_movies_by_year.png")" alt="Data Processing" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>The data processing pipeline shows how raw movie data is transformed into feature vectors for recommendation.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="similarity" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/synthetic_similarity.png")" alt="Similarity Matrix" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>The cosine similarity matrix shows how movies are related to each other based on their combined features.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="output" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/Recommendation system Screen.jpg")" alt="Recommendation Output" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>The recommendation output shows the top 5 similar movies for a given input movie.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="demonstrate" role="tabpanel">
+                            <div class="diagram-container">
+                                <!-- Video demonstration replacing the image -->
+                                <video width="100%" controls class="img-fluid">
+                                    <source src="@Url.Content("~/images/Recommendation System.mp4")" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>This video demonstrates the working of the recommendation model:</p>
+                                <ul>
+                                    <li>Real-time movie recommendation generation</li>
+                                    <li>System response to different input movies</li>
+                                    <li>Visualization of similarity scoring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/synthetic_genres.png")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="0">
+                        </div>
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/synthetic_wordcloud.png")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="1">
+                        </div>
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/synthetic_recommendations.png")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Challenges & Solutions -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">Technical Challenges & Solutions</h3>
+                    <div class="accordion" id="challengesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#challenge1">
+                                    JSON-like Data Parsing
+                                </button>
+                            </h2>
+                            <div id="challenge1" class="accordion-collapse collapse show" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>The dataset contained JSON-like strings in columns like genres, keywords, cast, and crew that needed to be parsed.</p>
+                                    <p><strong>Solution:</strong> Implemented custom parsing functions using ast.literal_eval to:</p>
+                                    <ul>
+                                        <li>Extract genre names from nested dictionaries</li>
+                                        <li>Get top 3 cast members</li>
+                                        <li>Identify directors from crew</li>
+                                        <li>Combine all relevant features</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Successfully converted complex JSON structures into usable lists of features.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge2">
+                                    Text Preprocessing
+                                </button>
+                            </h2>
+                            <div id="challenge2" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Text features needed normalization to improve recommendation quality.</p>
+                                    <p><strong>Solution:</strong> Implemented:</p>
+                                    <ul>
+                                        <li>Space removal between names (Tom Cruise → TomCruise)</li>
+                                        <li>Lowercasing all text</li>
+                                        <li>Porter stemming to reduce words to root forms</li>
+                                        <li>Combination of all features into a single "tags" column</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Cleaned and standardized text improved similarity calculations.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge3">
+                                    Similarity Calculation
+                                </button>
+                            </h2>
+                            <div id="challenge3" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Calculating similarity between 5000+ movies with high-dimensional vectors.</p>
+                                    <p><strong>Solution:</strong> Applied:</p>
+                                    <ul>
+                                        <li>CountVectorizer with max_features=5000 to limit dimensionality</li>
+                                        <li>Cosine similarity for measuring similarity between vectors</li>
+                                        <li>Efficient matrix operations with NumPy</li>
+                                        <li>Pre-computed similarity matrix for fast recommendations</li>
+                                    </ul>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Fast and accurate recommendations despite large dataset size.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Key Code Implementation</h3>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Data Parsing and Cleaning</h5>
+                        <pre><code class="language-python">import ast
+import pandas as pd
+from nltk.stem import PorterStemmer
+
+# Function to convert JSON-like strings to lists
+def convert_to_list(objects):
+    new_list = []
+    for item in ast.literal_eval(objects):
+        new_list.append(item['name'])
+    return new_list
+
+# Function to get top 3 cast members
+def convert3(objects):
+    new_list = []
+    counter = 0
+    for item in ast.literal_eval(objects):
+        if counter != 3:
+            new_list.append(item['name'])
+            counter += 1
+        else:
+            break
+    return new_list
+
+# Function to get director from crew
+def convert_crew(objects):
+    new_list = []
+    for item in ast.literal_eval(objects):
+        if item['job'] == 'Director':
+            new_list.append(item['name'])
+            break
+    return new_list
+
+# Apply parsing functions
+movies['genres'] = movies['genres'].apply(convert_to_list)
+movies['keywords'] = movies['keywords'].apply(convert_to_list)
+movies['cast'] = movies['cast'].apply(convert3)
+movies['crew'] = movies['crew'].apply(convert_crew)</code></pre>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Text Processing and Feature Combination</h5>
+                        <pre><code class="language-python"># Process overview text
+movies['overview'] = movies['overview'].apply(lambda x: x.split())
+
+# Remove spaces between names and lowercase
+movies['cast'] = movies['cast'].apply(lambda x: [i.replace(" ", "") for i in x])
+movies['crew'] = movies['crew'].apply(lambda x: [i.replace(" ", "") for i in x])
+movies['overview'] = movies['overview'].apply(lambda x: [i.replace(" ", "") for i in x])
+movies['keywords'] = movies['keywords'].apply(lambda x: [i.replace(" ", "") for i in x])
+
+# Combine all features into tags
+movies['tags'] = movies['genres'] + movies['overview'] + movies['keywords'] + movies['cast'] + movies['crew']
+
+# Convert list to string
+movies['tags'] = movies['tags'].apply(lambda x: " ".join(x))
+
+# Apply stemming
+ps = PorterStemmer()
+def stem(text):
+    lis = []
+    for i in text.split():
+        lis.append(ps.stem(i))
+    return " ".join(lis)
+
+movies['tags'] = movies['tags'].apply(stem)</code></pre>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Vectorization and Recommendation</h5>
+                        <pre><code class="language-python">from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Create count vectors
+cv = CountVectorizer(max_features=5000, stop_words='english')
+vectors = cv.fit_transform(movies['tags']).toarray()
+
+# Calculate cosine similarity
+similarity = cosine_similarity(vectors)
+
+# Recommendation function
+def recommend(movie):
+    movie_index = movies[movies['title'] == movie].index[0]
+    distances = similarity[movie_index]
+    movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+
+    for i in movies_list:
+        print(movies.iloc[i[0]].title)
+
+# Example usage
+recommend('The Dark Knight')</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        // Make visualization thumbnails clickable to switch tabs
+        document.querySelectorAll('.screenshot-thumb').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const tabEl = document.querySelector(this.getAttribute('data-bs-target'));
+                const tab = new bootstrap.Tab(this);
+                tab.show();
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Syntax highlighting for code blocks
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            }
+        });
+    </script>
+}

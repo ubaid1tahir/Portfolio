@@ -1,0 +1,716 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ubaid - AI/ML Specialist Resume</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6e48aa;
+            --secondary: #9d50bb;
+            --dark: #1e1a2f;
+            --light: #f8f5ff;
+            --accent: #4776e6;
+            --neon: #00f2fe;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f0f0f7;
+            background-image: radial-gradient(circle at 10% 20%, rgba(110,72,170,0.05) 0%, rgba(157,80,187,0.05) 90%);
+        }
+
+        .resume-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(110,72,170,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(110,72,170,0.1);
+        }
+
+        .resume-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .resume-header:before {
+                content: "AI/ML";
+                position: absolute;
+                bottom: -30px;
+                right: 20px;
+                font-family: 'Roboto Mono', monospace;
+                font-size: 100px;
+                opacity: 0.08;
+                color: white;
+                font-weight: 700;
+                transform: rotate(-5deg);
+            }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 5px;
+        }
+
+        .name-title {
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 1.3rem;
+            font-weight: 400;
+            opacity: 0.9;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.15);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .resume-body {
+            padding: 3rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 3px;
+                background: linear-gradient(to right, var(--primary), rgba(110,72,170,0.2));
+            }
+
+        .about-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            flex: 1;
+            min-width: 250px;
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(110,72,170,0.03);
+            border: 1px solid rgba(110,72,170,0.1);
+        }
+
+            .skill-category h5 {
+                font-weight: 600;
+                color: var(--dark);
+                margin-bottom: 1rem;
+                font-size: 1.1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+                .skill-category h5 i {
+                    color: var(--primary);
+                }
+
+        .skill-badge {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            margin: 0 0.5rem 0.5rem 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #e8e0f5;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+            .skill-badge:hover {
+                background-color: var(--primary);
+                color: white;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(110,72,170,0.2);
+            }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+            .timeline:before {
+                content: '';
+                position: absolute;
+                left: 7px;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: linear-gradient(to bottom, var(--primary), rgba(110,72,170,0.2));
+            }
+
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2rem;
+        }
+
+            .timeline-item:last-child {
+                padding-bottom: 0;
+            }
+
+            .timeline-item:before {
+                content: '';
+                position: absolute;
+                left: -2rem;
+                top: 5px;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                background: white;
+                border: 3px solid var(--primary);
+                z-index: 1;
+            }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .timeline-subtitle {
+            font-size: 0.95rem;
+            color: #777;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-date {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 500;
+            background: rgba(110,72,170,0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 50px;
+        }
+
+        .timeline-content {
+            color: #555;
+        }
+
+            .timeline-content ul {
+                padding-left: 1.2rem;
+            }
+
+            .timeline-content li {
+                margin-bottom: 0.5rem;
+                position: relative;
+            }
+
+                .timeline-content li:before {
+                    content: '▸';
+                    color: var(--primary);
+                    font-weight: bold;
+                    display: inline-block;
+                    width: 1em;
+                    margin-left: -1em;
+                    position: absolute;
+                    left: 0;
+                }
+
+        .project-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(110,72,170,0.05);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            border: 1px solid #e8e0f5;
+        }
+
+            .project-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(110,72,170,0.1);
+            }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .project-title i {
+                color: var(--primary);
+            }
+
+        .project-desc {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack {
+            font-family: 'Roboto Mono', monospace;
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            margin: 1rem 0;
+            border-left: 3px solid var(--primary);
+            color: var(--dark);
+        }
+
+        .certification-card {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+            .certification-card:last-child {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+        .cert-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .cert-content h5 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .cert-issuer {
+            font-size: 0.95rem;
+            color: #777;
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .download-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(110,72,170,0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+            .download-btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(110,72,170,0.4);
+                color: white;
+            }
+
+        @@media print {
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+
+            .resume-container {
+                box-shadow: none;
+                margin: 0;
+                border-radius: 0;
+            }
+
+            .download-btn {
+                display: none !important;
+            }
+
+            .resume-header {
+                padding: 2rem 0;
+            }
+        }
+
+        @@media (max-width: 768px) {
+            .resume-body {
+                padding: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+
+            .contact-item {
+                width: fit-content;
+            }
+
+            .name {
+                font-size: 1.8rem;
+            }
+
+            .title {
+                font-size: 1.1rem;
+            }
+
+            .skill-category {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Resume Container -->
+    <div class="resume-container">
+        <!-- Header Section -->
+        <div class="resume-header">
+            <div class="container">
+                <img src="~/assets/images/MyPic.png" alt="Muhammad Ubaid" class="profile-img">
+                <div class="name-title">
+                    <h1 class="name">MUHAMMAD UBAID</h1>
+                    <h2 class="title">AI & Machine Learning Specialist</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>mu4991472@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+92 303 6060018</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Lahore, Pakistan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Resume Body -->
+        <div class="resume-body">
+            <!-- About Section -->
+            <section class="section">
+                <h3 class="section-title">ABOUT ME</h3>
+                <p class="about-text">
+                    AI/ML Specialist with 3+ years of experience building intelligent systems and implementing cutting-edge machine learning solutions.
+                    Passionate about natural language processing, computer vision, and developing production-ready AI applications.
+                    Strong expertise in transforming theoretical models into scalable solutions that deliver measurable business impact.
+                </p>
+                <div class="tech-stack">
+                    # Core Expertise:<br>
+                    - Natural Language Processing (NLP)<br>
+                    - Large Language Models (LLMs)<br>
+                    - Computer Vision<br>
+                    - Deep Learning Architectures<br>
+                    - MLOps & Deployment
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="section">
+                <h3 class="section-title">TECHNICAL SKILLS</h3>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h5><i class="fas fa-brain"></i> Machine Learning</h5>
+                        <div>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">TensorFlow</span>
+                            <span class="skill-badge">PyTorch</span>
+                            <span class="skill-badge">Scikit-learn</span>
+                            <span class="skill-badge">Keras</span>
+                            <span class="skill-badge">XGBoost</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h5><i class="fas fa-language"></i> NLP & LLMs</h5>
+                        <div>
+                            <span class="skill-badge">Transformers</span>
+                            <span class="skill-badge">LangChain</span>
+                            <span class="skill-badge">HuggingFace</span>
+                            <span class="skill-badge">BERT/GPT</span>
+                            <span class="skill-badge">RAG Systems</span>
+                            <span class="skill-badge">NLTK/spaCy</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h5><i class="fas fa-eye"></i> Computer Vision</h5>
+                        <div>
+                            <span class="skill-badge">OpenCV</span>
+                            <span class="skill-badge">YOLO</span>
+                            <span class="skill-badge">CNN Architectures</span>
+                            <span class="skill-badge">Image Processing</span>
+                            <span class="skill-badge">Object Detection</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h5><i class="fas fa-server"></i> Deployment & Tools</h5>
+                        <div>
+                            <span class="skill-badge">Docker</span>
+                            <span class="skill-badge">FastAPI</span>
+                            <span class="skill-badge">MLflow</span>
+                            <span class="skill-badge">AWS SageMaker</span>
+                            <span class="skill-badge">Azure ML</span>
+                            <span class="skill-badge">Git</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Experience Section -->
+            <section class="section">
+                <h3 class="section-title">PROFESSIONAL EXPERIENCE</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4 class="timeline-title">Senior AI Engineer</h4>
+                            <span class="timeline-date">Jan 2022 - Present</span>
+                        </div>
+                        <p class="timeline-subtitle">AI Innovations Inc. | Remote</p>
+                        <div class="timeline-content">
+                            <ul>
+                                <li>Developed and deployed a RAG-based legal document analysis system that reduced research time by 60% for enterprise clients</li>
+                                <li>Led a team of 4 ML engineers in building an AI-powered SaaS platform serving 50+ clients with 99.5% uptime</li>
+                                <li>Implemented novel NLP techniques that improved text classification accuracy from 88% to 96% on proprietary datasets</li>
+                                <li>Optimized deep learning models for production, reducing inference time by 40% while maintaining model performance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4 class="timeline-title">Machine Learning Engineer</h4>
+                            <span class="timeline-date">Mar 2020 - Dec 2021</span>
+                        </div>
+                        <p class="timeline-subtitle">DataScience Labs | Lahore, Pakistan</p>
+                        <div class="timeline-content">
+                            <ul>
+                                <li>Built computer vision models for medical image analysis achieving 94% accuracy in disease classification</li>
+                                <li>Developed custom NLP pipelines for text processing and sentiment analysis in multiple languages</li>
+                                <li>Created automated ML workflows that reduced model development time by 30%</li>
+                                <li>Published 2 research papers on novel applications of transfer learning in healthcare</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section class="section">
+                <h3 class="section-title">KEY PROJECTS</h3>
+                <div class="project-card">
+                    <h4 class="project-title"><i class="fas fa-gavel"></i> LegalDoc AI - RAG System</h4>
+                    <p class="project-desc">
+                        AI-powered legal document analysis platform with semantic search and automatic citation generation.
+                        Processes 1000+ pages/minute with 95% accuracy in relevant passage retrieval.
+                    </p>
+                    <div class="tech-stack">
+                        Tech Stack: Python, LangChain, FAISS, Transformers, FastAPI, Azure
+                    </div>
+                    <div>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">LangChain</span>
+                        <span class="skill-badge">LLMs</span>
+                        <span class="skill-badge">Azure Cognitive Search</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h4 class="project-title"><i class="fas fa-x-ray"></i> Medical Image Classifier</h4>
+                    <p class="project-desc">
+                        Deep learning model for classifying chest X-rays with 94% accuracy.
+                        Implements Grad-CAM for explainable AI in medical diagnostics.
+                    </p>
+                    <div class="tech-stack">
+                        Tech Stack: Python, TensorFlow, OpenCV, DICOM Processing, Grad-CAM
+                    </div>
+                    <div>
+                        <span class="skill-badge">Python</span>
+                        <span class="skill-badge">TensorFlow</span>
+                        <span class="skill-badge">Computer Vision</span>
+                        <span class="skill-badge">Explainable AI</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <h4 class="project-title"><i class="fas fa-robot"></i> AI Customer Support Agent</h4>
+                    <p class="project-desc">
+                        NLP-powered virtual assistant handling 10,000+ customer queries monthly with 85% resolution rate.
+                        Integrated with multiple business systems via API.
+                    </p>
+                    <div class="tech-stack">
+                        Tech Stack: Python, Transformers, Dialogflow, FastAPI, AWS
+                    </div>
+                    <div>
+                        <span class="skill-badge">NLP</span>
+                        <span class="skill-badge">Transformers</span>
+                        <span class="skill-badge">Dialog Systems</span>
+                        <span class="skill-badge">AWS Lambda</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section class="section">
+                <h3 class="section-title">EDUCATION</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4 class="timeline-title">MSc in Computer Science</h4>
+                            <span class="timeline-date">2018 - 2020</span>
+                        </div>
+                        <p class="timeline-subtitle">University of Lahore, Pakistan</p>
+                        <div class="timeline-content">
+                            <p>Specialization in Artificial Intelligence | GPA: 3.8/4.0</p>
+                            <p>Thesis: "Advanced Techniques in Neural Machine Translation"</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-header">
+                            <h4 class="timeline-title">BSc in Software Engineering</h4>
+                            <span class="timeline-date">2014 - 2018</span>
+                        </div>
+                        <p class="timeline-subtitle">University of Punjab, Pakistan</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
+            <section class="section">
+                <h3 class="section-title">CERTIFICATIONS</h3>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h5>Microsoft Certified: Azure AI Engineer</h5>
+                        <p class="cert-issuer">Microsoft</p>
+                        <p class="cert-date">Issued: 2023 | Credential ID: AI-102</p>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h5>Deep Learning Specialization</h5>
+                        <p class="cert-issuer">DeepLearning.AI</p>
+                        <p class="cert-date">Issued: 2022</p>
+                    </div>
+                </div>
+                <div class="certification-card">
+                    <div class="cert-icon">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <div class="cert-content">
+                        <h5>Natural Language Processing</h5>
+                        <p class="cert-issuer">Stanford Online</p>
+                        <p class="cert-date">Issued: 2021</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Download Button -->
+    <button onclick="window.print()" class="download-btn">
+        <i class="fas fa-download"></i> Download Resume
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

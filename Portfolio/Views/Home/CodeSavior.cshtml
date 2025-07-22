@@ -1,0 +1,332 @@
+﻿@{
+    Layout = "_LayoutLan";
+    ViewData["Title"] = "Project Details";
+}
+
+@section styles {
+    <style>
+        .project-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 3rem 0;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+        }
+
+        .tech-badge {
+            display: inline-block;
+            padding: 0.35em 0.65em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            color: #fff;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            background-color: rgba(255,255,255,0.2);
+            margin: 0.25rem;
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .diagram-container {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+    </style>
+}
+
+<!-- Project Header -->
+<div class="project-header">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3 text-white">Code Savior – AI Code Management Platform</h1>
+        <p class="lead mb-4 text-white">A smart code repository that uses AI to generate, document, and organize code across technologies.</p>
+        <div class="d-flex justify-content-center flex-wrap">
+            <span class="tech-badge">ASP.NET Core</span>
+            <span class="tech-badge">OpenAI</span>
+            <span class="tech-badge">Entity Framework</span>
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">Razor Pages</span>
+            <span class="tech-badge">Tailwind CSS</span>
+        </div>
+    </div>
+</div>
+
+<!-- Project Content -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">About This Project</h3>
+                    <p class="lead">Code Savior is a SaaS platform that empowers developers by offering a unified space to save, manage, generate, and document code using AI.</p>
+                    <p>The platform enables efficient searching, smart tagging, automatic documentation, and intelligent AI code suggestions tailored to the developer's context.</p>
+                    <div class="alert alert-primary mt-4">
+                        <i class="ri-lightbulb-flash-line me-2"></i>
+                        <strong>Key Innovation:</strong> Real-time AI integration for code generation and auto-documentation streamlines developer productivity.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">System Architecture</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/CodeSaviorArchitecture.png")" alt="System Architecture" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 1: High-level architecture of the Code Savior SaaS platform</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Core Features</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-code-line text-primary me-2"></i> AI Code Generator</h5>
+                                    <p class="text-muted">Generate code snippets based on user prompts with OpenAI integration.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-file-list-3-line text-primary me-2"></i> AI Documentation</h5>
+                                    <p class="text-muted">Automatically generate technical documentation for saved code.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-search-line text-primary me-2"></i> Smart Search</h5>
+                                    <p class="text-muted">Find code easily by tags, technology, or custom keywords.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-save-3-line text-primary me-2"></i> Code Saving & Management</h5>
+                                    <p class="text-muted">Store and organize reusable code blocks with version tracking.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-user-line text-primary me-2"></i> Subscription Plans</h5>
+                                    <p class="text-muted">Multiple plans with limits on AI usage, monthly and yearly billing.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-lock-password-line text-primary me-2"></i> Secure Access</h5>
+                                    <p class="text-muted">Uses ASP.NET Identity for secure login, role management, and billing access.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Database Schema</h3>
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/ERDCodeSavior.png")" alt="ERD Diagram" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 2: Entity Relationship Diagram for code storage and subscription handling</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Screenshots Section -->
+            <div class="card mb-4 border-0 shadow-sm" id="screenshots">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Screenshots</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <img src="@Url.Content("~/images/AI Code Generation.jpg")" class="img-fluid rounded shadow" alt="Code Editor">
+                            <p class="text-muted text-center mt-2">AI-powered code generation</p>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Url.Content("~/images/Shared Code Snippet.jpg")" class="img-fluid rounded shadow" alt="Documentation">
+                            <p class="text-muted text-center mt-2">Shared Code Snippets</p>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Url.Content("~/images/Dashboard CodeSavior.jpg")" class="img-fluid rounded shadow" alt="Dashboard">
+                            <p class="text-muted text-center mt-2">User dashboard with code snippets</p>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <img src="@Url.Content("~/images/Profile Code Savior.jpg")" class="img-fluid rounded shadow" alt="Search">
+                            <p class="text-muted text-center mt-2">Profile View</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Challenges Section -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Challenges & Solutions</h3>
+                    <div class="accordion" id="challengesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#challenge1">
+                                    <i class="ri-bug-line me-2"></i> AI Response Quality
+                                </button>
+                            </h2>
+                            <div id="challenge1" class="accordion-collapse collapse show" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <strong>Challenge:</strong> Initial AI responses were inconsistent and sometimes irrelevant.<br>
+                                    <strong>Solution:</strong> Implemented prompt engineering techniques and added context from the user's code history to improve relevance.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge2">
+                                    <i class="ri-database-2-line me-2"></i> Code Storage Efficiency
+                                </button>
+                            </h2>
+                            <div id="challenge2" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <strong>Challenge:</strong> Storing and indexing large amounts of code snippets efficiently.<br>
+                                    <strong>Solution:</strong> Developed a hybrid storage system with SQL Server for metadata and Azure Blob Storage for larger code files.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge3">
+                                    <i class="ri-shield-keyhole-line me-2"></i> Subscription Management
+                                </button>
+                            </h2>
+                            <div id="challenge3" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <strong>Challenge:</strong> Complex subscription logic with API call limits.<br>
+                                    <strong>Solution:</strong> Implemented a robust quota system with Stripe integration and middleware to enforce limits.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <div class="card mb-4 border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Project Links</h5>
+                    <a href="https://codesavior.app" class="btn btn-primary w-100 mb-3" target="_blank">
+                        <i class="ri-external-link-line me-2"></i> Live Demo
+                    </a>
+                    <a href="https://github.com/yourusername/CodeSavior" class="btn btn-outline-primary w-100 mb-3" target="_blank">
+                        <i class="ri-github-fill me-2"></i> View Source Code
+                    </a>
+                    <a href="#screenshots" class="btn btn-light w-100 mb-3">
+                        <i class="ri-image-line me-2"></i> View Screenshots
+                    </a>
+
+                    <hr class="my-3">
+
+                    <div class="project-details mt-3 p-3 bg-light rounded">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2">🚀 Project Details</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <span class="me-2 fw-semibold">Status:</span>
+                                <span class="badge bg-success me-2">Completed</span>
+                                <span class="badge bg-secondary">In Use</span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Client:</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary">
+                                    <i class="fas fa-code me-1"></i> Dev Community
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Duration:</span>
+                                <span class="badge bg-info bg-opacity-10 text-info">
+                                    <i class="fas fa-clock me-1"></i> 4 months
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Team:</span>
+                                <span class="badge bg-warning bg-opacity-15 text-dark">
+                                    <i class="fas fa-user-shield me-1"></i> Solo Developer
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Hosting:</span>
+                                <span class="badge bg-dark text-white">
+                                    <i class="fab fa-digital-ocean me-1"></i> Digital Ocean
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Technology Stack</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Backend</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">ASP.NET Core MVC</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">OpenAI API</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Entity Framework</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Frontend</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">Tailwind CSS</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Razor Views</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">JavaScript</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Infrastructure</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">SQL Server</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Digital Ocean</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Stripe</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">View Documentation</h5>
+                    <p class="text-muted">
+                        Download the full Code Savior documentation in PDF format, including features, setup, and API usage.
+                    </p>
+                    <a href="~/doc/CodeSavior_Documentation.pdf" class="btn btn-sm btn-primary" download>
+                        <i class="ri-file-download-line me-1"></i> Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <!-- Bootstrap JS and any additional scripts needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+}

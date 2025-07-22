@@ -1,0 +1,528 @@
+﻿@{
+    Layout = "_LayoutLan";
+    ViewData["Title"] = "Sentiment Analysis Project";
+}
+
+@section styles {
+    <style>
+        .project-header {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 3rem 0;
+            margin-bottom: 2rem;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .tech-badge {
+            background-color: rgba(255,255,255,0.2);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        .diagram-container {
+            border: 1px solid #eaeaea;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .feature-card {
+            border-left: 3px solid #6c5ce7;
+            transition: all 0.3s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+
+        .nav-tabs .nav-link.active {
+            border-bottom: 3px solid #6c5ce7;
+            font-weight: 600;
+        }
+
+        .screenshot-thumb {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .screenshot-thumb:hover {
+                transform: scale(1.03);
+                border-color: #6c5ce7;
+            }
+
+        .architecture-section {
+            background-color: #f9fbfd;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .model-comparison {
+            border-left: 4px solid #6c5ce7;
+            padding-left: 1rem;
+        }
+    </style>
+}
+
+<!-- Project Header -->
+<div class="project-header">
+    <div class="container text-center mt-5">
+        <h1 class="display-4 fw-bold mb-3 text-white">Music Album Review Sentiment Analysis</h1>
+        <p class="lead mb-4">A machine learning system that classifies music album reviews into 6 sentiment categories using Bi-Directional LSTM, Gated Recurrent Unit and traditional ML models.</p>
+        <div class="d-flex justify-content-center flex-wrap">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">TensorFlow</span>
+            <span class="tech-badge">Keras</span>
+            <span class="tech-badge">Scikit-learn</span>
+            <span class="tech-badge">Pandas</span>
+            <span class="tech-badge">NLTK</span>
+            <span class="tech-badge">Matplotlib</span>
+        </div>
+    </div>
+</div>
+
+<!-- Project Content -->
+<div class="container mb-5">
+    <div class="row">
+        <!-- Main Content -->
+        <div class="col-lg-8">
+            <!-- Project Description -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Project Overview</h3>
+                    <p class="lead">This sentiment analysis system processes music album reviews and classifies them into 6 sentiment categories (0-5 stars) using advanced natural language processing techniques.</p>
+
+                    <p>The project involved extensive data preprocessing, exploratory analysis, and implementation of both traditional machine learning models (Logistic Regression, SVM, Random Forest) and deep learning approaches (Bi-Directional LSTM). The system handles class imbalance through oversampling and achieves strong performance metrics.</p>
+                    <p>We use BiDirectional LSTM over GRU even its accuracy is better than Bidirectional LSTM because Bidirectioanl LSTM can better perform on ambiguous sentences due to its dual traversal.</p>
+                    <div class="alert alert-primary mt-4">
+                        <i class="ri-lightbulb-flash-line me-2"></i>
+                        <strong>Key Innovation:</strong> The combination of traditional ML models with a Bi-Directional LSTM architecture provides robust sentiment classification, with the LSTM model particularly effective at capturing contextual relationships in review text.
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Key Features -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Technical Highlights</h3>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-database-2-line text-primary me-2"></i> Data Processing</h5>
+                                    <ul class="text-muted">
+                                        <li>78,162 music album reviews</li>
+                                        <li>Handled class imbalance with oversampling</li>
+                                        <li>Text cleaning and tokenization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-brain-line text-primary me-2"></i> Model Architecture</h5>
+                                    <ul class="text-muted">
+                                        <li>Bi-Directional LSTM with embedding layer</li>
+                                        <li>Global max pooling</li>
+                                        <li>Dense layers with dropout</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-line-chart-line text-primary me-2"></i> Evaluation</h5>
+                                    <ul class="text-muted">
+                                        <li>Accuracy, Precision, Recall metrics</li>
+                                        <li>Confusion matrix analysis</li>
+                                        <li>Comparison with traditional ML models</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <div class="card feature-card h-100">
+                                <div class="card-body">
+                                    <h5><i class="ri-stack-line text-primary me-2"></i> Technologies</h5>
+                                    <ul class="text-muted">
+                                        <li>TensorFlow/Keras for deep learning</li>
+                                        <li>Scikit-learn for traditional ML</li>
+                                        <li>Pandas/Numpy for data manipulation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Model Performance</h3>
+
+                    <div class="row mb-4">
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-checkbox-circle-line"></i> Accuracy</h5>
+                                <h2>86.4%</h2>
+                                <small>Bi-Directional LSTM</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-timer-flash-line"></i> Precision</h5>
+                                <h2>85.2%</h2>
+                                <small>Weighted average</small>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="metric-card">
+                                <h5><i class="ri-refresh-line"></i> Recall</h5>
+                                <h2>86.4%</h2>
+                                <small>Weighted average</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="model-comparison mb-4">
+                        <h5 class="fw-bold">Model Comparison</h5>
+                        <p>The Bi-Directional LSTM outperformed traditional machine learning models:</p>
+                        <ul>
+                            <li><strong>Logistic Regression:</strong> 78.3% accuracy</li>
+                            <li><strong>Random Forest:</strong> 81.6% accuracy</li>
+                            <li><strong>SVM:</strong> 79.8% accuracy</li>
+                        </ul>
+                    </div>
+
+                    <div class="diagram-container">
+                        <img src="@Url.Content("~/images/report-classification.png")" alt="Confusion Matrix" class="img-fluid">
+                    </div>
+                    <div class="mt-3 text-muted text-center">
+                        <small>Figure 2: Confusion matrix showing classification performance across 6 sentiment classes</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="col-lg-4">
+            <!-- Quick Links -->
+            <div class="card mb-4 border-0 shadow-sm sticky-top" style="top: 20px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Project Links</h5>
+                    <a href="https://github.com/yourusername/sentiment-analysis" class="btn btn-primary w-100 mb-3" target="_blank">
+                        <i class="ri-github-fill me-2"></i> View Source Code
+                    </a>
+                    <a href="#screenshots" class="btn btn-outline-primary w-100 mb-3">
+                        <i class="ri-image-line me-2"></i> View Visualizations
+                    </a>
+                    <a href="@Url.Content("~/docs/sentiment_analysis_report.pdf")" class="btn btn-light w-100 mb-3" download>
+                        <i class="ri-file-download-line me-2"></i> Download Report
+                    </a>
+
+                    <hr class="my-3">
+
+                    <div class="project-details mt-3 p-3 bg-light rounded">
+                        <h5 class="fw-bold mb-3 border-bottom pb-2">📊 Project Details</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3 d-flex align-items-center">
+                                <span class="me-2 fw-semibold">Status:</span>
+                                <span class="badge bg-success">Completed</span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Dataset:</span>
+                                <span class="badge bg-primary bg-opacity-10 text-primary">
+                                    78,162 reviews
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Classes:</span>
+                                <span class="badge bg-info bg-opacity-10 text-info">
+                                    6 sentiment levels
+                                </span>
+                            </li>
+                            <li class="mb-3">
+                                <span class="fw-semibold me-2">Framework:</span>
+                                <span class="badge bg-dark text-white">
+                                    TensorFlow 2.x
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Technology Stack</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Core Libraries</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">TensorFlow</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Keras</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Scikit-learn</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Pandas</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Numpy</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">NLP</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">NLTK</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Tokenizer</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Word Embeddings</span>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Visualization</h6>
+                        <span class="badge bg-light text-dark me-1 mb-1">Matplotlib</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Seaborn</span>
+                        <span class="badge bg-light text-dark me-1 mb-1">Plotly</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dataset Info -->
+            <div class="card mb-4 border-0 shadow-sm">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-3">Dataset Information</h5>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">Original Distribution</h6>
+                        <ul class="text-muted small">
+                            <li>5-star: 29,520 (37.8%)</li>
+                            <li>4-star: 39,045 (49.9%)</li>
+                            <li>3-star: 4,430 (5.7%)</li>
+                            <li>2-star: 4,245 (5.4%)</li>
+                            <li>1-star: 525 (0.7%)</li>
+                            <li>0.5-star: 397 (0.5%)</li>
+                        </ul>
+                    </div>
+                    <div class="mb-3">
+                        <h6 class="fw-semibold">After Oversampling</h6>
+                        <p class="text-muted small">Balanced to 39,045 samples per class</p>
+                    </div>
+                    <div class="alert alert-warning small">
+                        <i class="ri-alert-line me-1"></i> Significant class imbalance required oversampling for model training
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Visualizations Section -->
+    <div class="row mt-5" id="screenshots">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">Data Visualizations</h3>
+
+                    <ul class="nav nav-tabs mb-4" id="visualizationTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="distribution-tab" data-bs-toggle="tab" data-bs-target="#distribution" type="button" role="tab">Rating Distribution</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="length-tab" data-bs-toggle="tab" data-bs-target="#length" type="button" role="tab">Review Length</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="model-tab" data-bs-toggle="tab" data-bs-target="#model" type="button" role="tab">Model Architecture</button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content" id="visualizationTabsContent">
+                        <div class="tab-pane fade show active" id="distribution" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/Rating Distribution.png")" alt="Rating Distribution" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>Original rating distribution showed extreme imbalance with most reviews being 4 or 5 stars. Oversampling was applied to create balanced classes for training.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="length" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/Review Length.png")" alt="Review Length Distribution" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>Review length analysis showed most reviews under 600 words. The 95th percentile was used to determine optimal padding length for the LSTM model.</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="model" role="tabpanel">
+                            <div class="diagram-container">
+                                <img src="@Url.Content("~/images/Model Architecture BiDirectional LSTM.jpg")" alt="Model Architecture" class="img-fluid">
+                            </div>
+                            <div class="mt-3 text-muted">
+                                <p>The Bi-Directional LSTM architecture with embedding layer, global max pooling, and dense layers with dropout achieved the best performance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Accuracy Chart.png")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="0">
+                        </div>
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Precision Chart.png")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="1">
+                        </div>
+                        <div class="col-md-4 col-6 mb-3">
+                            <img src="@Url.Content("~/images/Recall Comparison.png")" class="img-thumbnail screenshot-thumb" data-bs-target="#visualizationTabs" data-bs-slide-to="2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Challenges & Solutions -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-4">Technical Challenges & Solutions</h3>
+                    <div class="accordion" id="challengesAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#challenge1">
+                                    Class Imbalance
+                                </button>
+                            </h2>
+                            <div id="challenge1" class="accordion-collapse collapse show" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>The original dataset had extreme class imbalance with 49.9% 4-star and 37.8% 5-star reviews, while other classes were underrepresented.</p>
+                                    <p><strong>Solution:</strong> Implemented oversampling to balance all classes to 39,045 samples each, ensuring the model wouldn't be biased toward majority classes.</p>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Model learned to recognize patterns in all sentiment classes equally.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge2">
+                                    Variable Review Lengths
+                                </button>
+                            </h2>
+                            <div id="challenge2" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Review lengths varied from a few words to thousands, making consistent model input challenging.</p>
+                                    <p><strong>Solution:</strong> Analyzed length distribution and used the 95th percentile (612 words) as max length for padding/truncation.</p>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Balanced information retention with computational efficiency.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#challenge3">
+                                    Model Selection
+                                </button>
+                            </h2>
+                            <div id="challenge3" class="accordion-collapse collapse" data-bs-parent="#challengesAccordion">
+                                <div class="accordion-body">
+                                    <p>Needed to determine whether traditional ML or deep learning would perform better for this task.</p>
+                                    <p><strong>Solution:</strong> Implemented and compared Logistic Regression, SVM, Random Forest, and Bi-Directional LSTM models.</p>
+                                    <div class="alert alert-light mt-2">
+                                        <i class="ri-arrow-right-line me-1"></i> <strong>Result:</strong> Bi-Directional LSTM achieved superior performance (86.4% accuracy vs 78-82% for traditional models).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Code Snippets -->
+    <div class="row mt-5">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body">
+                    <h3 class="fw-bold mb-3">Key Code Implementation</h3>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Bi-Directional LSTM Model Architecture</h5>
+                        <pre><code class="language-python">model = tf.keras.Sequential([
+    tf.keras.layers.Embedding(input_dim=30000, 
+                            output_dim=128, 
+                            input_length=max_len),
+    tf.keras.layers.Bidirectional(
+        tf.keras.layers.LSTM(64, return_sequences=True)),
+    tf.keras.layers.GlobalMaxPooling1D(),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dropout(0.5),
+    tf.keras.layers.Dense(6, activation='softmax')
+])</code></pre>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Data Preprocessing</h5>
+                        <pre><code class="language-python"># Handle class imbalance through oversampling
+dfs = [df[df['Rating_Class'] == i] for i in range(6)]
+max_count = max(len(d) for d in dfs)
+dfs_balanced = [resample(d, replace=True, 
+                        n_samples=max_count, 
+                        random_state=42) 
+                for d in dfs]
+df_balanced = pd.concat(dfs_balanced)</code></pre>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="fw-semibold">Text Tokenization</h5>
+                        <pre><code class="language-python">tokenizer = Tokenizer(num_words=30000, oov_token='<OOV>')
+tokenizer.fit_on_texts(df_balanced['Review'])
+sequences = tokenizer.texts_to_sequences(df_balanced['Review'])
+padded = pad_sequences(sequences, maxlen=max_len, 
+                      padding='post', truncating='post')</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        // Make visualization thumbnails clickable to switch tabs
+        document.querySelectorAll('.screenshot-thumb').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const tabEl = document.querySelector(this.getAttribute('data-bs-target'));
+                const tab = new bootstrap.Tab(this);
+                tab.show();
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Syntax highlighting for code blocks
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            }
+        });
+    </script>
+}

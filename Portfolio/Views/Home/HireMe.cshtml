@@ -1,0 +1,155 @@
+﻿@{
+    Layout = "_LayoutLan";
+    ViewData["Title"] = "Hire Me";
+}
+
+@section styles {
+    <style>
+        .hire-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .platform-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            padding: 30px;
+            text-align: center;
+        }
+
+            .platform-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            }
+
+        .platform-logo {
+            height: 60px;
+            margin-bottom: 20px;
+            object-fit: contain;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+}
+
+<div class="landing-banner" id="home">
+    <section class="section">
+        <div class="container main-banner-container pb-lg-0">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="py-lg-5">
+                        <div class="mb-3">
+                            <h5 class="fw-semibold text-fixed-white op-9">LET'S WORK TOGETHER</h5>
+                        </div>
+                        <p class="landing-banner-heading mb-3">Hire Me For Your <span class="text-secondary">Next Project</span></p>
+                        <div class="fs-16 mb-5 text-fixed-white op-7">
+                            I'm available for freelance projects, contract work, and full-time positions. Choose your preferred way to contact me.
+                        </div>
+                        <a href="#platforms" class="m-1 btn btn-primary">
+                            Hire Me Now
+                            <i class="ri-briefcase-line ms-2 align-middle"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mu4991472@gmail.com" target="_blank" class="m-1 btn btn-outline-light">
+                            Contact via Gmail
+                            <i class="ri-mail-line ms-2 align-middle"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <img src="~/assets/images/MyPic.png" alt="Hire Me" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Platforms Section -->
+<section class="section" id="platforms">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <p class="fs-12 fw-semibold text-success mb-1"><span class="landing-section-heading">HIRE ME</span></p>
+                <h3 class="fw-semibold mb-4">Available On These Platforms</h3>
+                <p class="text-muted mb-5">Choose your preferred platform to start our collaboration.</p>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="platform-card">
+                    <img src="~/images/fiverr.jpg" alt="Fiverr" class="platform-logo">
+                    <h5>Fiverr</h5>
+                    <p class="text-muted mb-4">Browse my gigs for fixed-price services and quick deliveries.</p>
+                    <a href="https://www.fiverr.com/users/deepwebcoder/seller_dashboard" target="_blank" class="btn btn-primary w-100">View Profile</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="platform-card">
+                    <img src="~/images/upwork.jpg" alt="Upwork" class="platform-logo">
+                    <h5>Upwork</h5>
+                    <p class="text-muted mb-4">Hire me for hourly or fixed-price contracts with Upwork protection.</p>
+                    <a href="https://www.upwork.com/freelancers/~017b0667dd9468e6ab" target="_blank" class="btn btn-primary w-100">View Profile</a>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="platform-card">
+                    <img src="~/images/linkedin.jpg" alt="LinkedIn" class="platform-logo">
+                    <h5>LinkedIn</h5>
+                    <p class="text-muted mb-4">Connect with me for professional opportunities and networking.</p>
+                    <a href="https://www.linkedin.com/in/muhammad-ubaid-a346ab276/" target="_blank" class="btn btn-primary w-100">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="section section-bg" id="contact">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <p class="fs-12 fw-semibold text-success mb-1"><span class="landing-section-heading">CONTACT</span></p>
+                <h3 class="fw-semibold mb-4">Send Me a Direct Message</h3>
+                <p class="text-muted mb-5">Prefer to email directly? Use the button below.</p>
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=mu4991472@gmail.com" target="_blank" class="btn btn-primary mb-5">
+                    <i class="ri-mail-line me-2"></i> Open Gmail Compose
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        // Form submission handling - would need backend integration
+        document.getElementById('hireForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // In a real implementation, you would send this data to your server
+            // For demo purposes, we'll redirect to Gmail with prefilled info
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            const body = `Hello Ubaid,%0D%0A%0D%0AMy name is ${name}.%0D%0A%0D%0A${message}%0D%0A%0D%0ABest regards,%0D%0A${name}%0D%0A${email}`;
+
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=ubaidtahir501@gmail.com&su=${encodeURIComponent(subject)}&body=${body}`, '_blank');
+
+            // Optional: Reset form after submission
+            this.reset();
+        });
+    </script>
+}
