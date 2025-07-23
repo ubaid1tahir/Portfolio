@@ -225,7 +225,7 @@
         <div class="row align-items-center">
             <div class="col-lg-6 text-start">
                 <h5 class="fw-semibold mb-3">Who am I?</h5>
-                <p class="text-muted">I'm Muhammad Ubaid, a passionate AI Web Developer based in Pakistan. With over [your experience – e.g., 2+ years] of hands-on experience, I’ve had the opportunity to work with startups, tech firms, and individual clients to build AI-driven systems, enterprise web applications, and automation tools.</p>
+                <p class="text-muted">I'm Muhammad Ubaid, a passionate AI Web Developer based in Pakistan. With over 3+ years of hands-on experience, I’ve had the opportunity to work with startups, tech firms, and individual clients to build AI-driven systems, enterprise web applications, and automation tools.</p>
                 <p class="text-muted">I specialize in ASP.NET Core MVC, Deep Learning, and Retrieval-Augmented Generation (RAG). My expertise lies in building intelligent, scalable web platforms and AI-powered solutions that streamline workflows, enhance user experience, and solve real-world problems efficiently.</p>
                 <p class="text-muted">From SaaS platforms to advanced AI chatbots, I focus on writing clean, secure code while integrating cutting-edge technologies like LLMs, vector databases, and neural networks. Whether it's building custom business tools, integrating APIs, or fine-tuning AI models, I bring a thoughtful, creative, and result-oriented mindset to every project.</p>
                 <p class="text-muted">Feel free to explore my portfolio and discover how I merge code with intelligence to craft meaningful digital experiences.</p>
@@ -380,6 +380,48 @@
                 </div>
             </div>
 
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4" data-category="ai">
+                <div class="card project-card h-100">
+                    <img src="@Url.Content("~/images/MT.jpg")" class="card-img-top project-img" alt="English-Arabic Machine Translation">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">English-Arabic Machine Translation</h5>
+                        <p class="card-text flex-grow-1">
+                            Developed a sequence-to-sequence neural machine translation model that translates English sentences to Arabic.
+                            The model handles diverse sentence structures and Arabic morphological variations.
+                        </p>
+                        <div class="tech-stack mb-3">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">TensorFlow</span>
+                            <span class="tech-badge">Keras</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">NLTK</span>
+                            <span class="tech-badge">PyArabic</span>
+                            <span class="tech-badge">NLP</span>
+                        </div>
+                        <div class="mt-auto">
+                            <a asp-controller="Home" asp-action="MachineTranslationEN_AR" class="btn btn-primary btn-sm">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xxl-4 col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4" data-category="ai">
+                <div class="card project-card">
+                    <img src="@Url.Content("~/images/Recommendation System Thumbnail.jpg")" class="project-img" alt="Movie Recommendation System">
+                    <div class="card-body">
+                        <h5 class="card-title">Movie Recommendation System</h5>
+                        <p class="card-text">Content-based recommender that suggests similar movies using cosine similarity of features like genres, cast, and keywords.</p>
+                        <div class="mb-3">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">NLTK</span>
+                            <span class="tech-badge">TMDB</span>
+                        </div>
+                        <a asp-controller="Home" asp-action="RecommendationSystem" class="btn btn-primary btn-sm">View Project</a>
+                    </div>
+                </div>
+            </div>
             <div class="mt-4">
                 <a asp-action="Projects" class="btn btn-outline-primary">View All Projects</a>
             </div>
@@ -464,12 +506,12 @@
                                     <img src="@Url.Content("~/assets/images/faces/15.jpg")" alt="Client">
                                 </span>
                                 <div>
-                                    <p class="mb-0 fw-semibold fs-14">Client Name</p>
-                                    <p class="mb-0 fs-10 fw-semibold text-muted">CEO, Company</p>
+                                    <p class="mb-0 fw-semibold fs-14">David Mitchell</p>
+                                    <p class="mb-0 fs-10 fw-semibold text-muted">Product Lead, TechNova</p>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <span class="text-muted">"Working with [Your Name] was an absolute pleasure. Their attention to detail and creative approach resulted in a product that exceeded our expectations. The project was delivered on time and within budget."</span>
+                                <span class="text-muted">"The sentiment analysis model delivered 94% accuracy on our product reviews - outperforming our existing solution by 18%. What impressed me most was how they handled our industry-specific terminology without needing extensive retraining."</span>
                             </div>
                             <div class="d-flex align-items-center justify-content-between">
                                 <div class="d-flex align-items-center">
@@ -486,7 +528,66 @@
                         </div>
                     </div>
                 </div>
-                <!-- Add more testimonials as needed -->
+                <div class="swiper-slide">
+                    <div class="card custom-card testimonial-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="avatar avatar-md avatar-rounded me-3">
+                                    <img src="@Url.Content("~/assets/images/faces/12.jpg")" alt="Client">
+                                </span>
+                                <div>
+                                    <p class="mb-0 fw-semibold fs-14">Aisha Al-Farsi</p>
+                                    <p class="mb-0 fs-10 fw-semibold text-muted">Localization Manager, GlobalConnect</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-muted">"Our English-Arabic translation model now handles regional dialects with 88% accuracy. They delivered clear documentation and trained our team - we've reduced outsourcing costs by 30% while improving quality."</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted">Rating: </span>
+                                    <span class="text-warning d-block ms-1">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="card custom-card testimonial-card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <span class="avatar avatar-md avatar-rounded me-3">
+                                    <img src="@Url.Content("~/assets/images/faces/9.jpg")" alt="Client">
+                                </span>
+                                <div>
+                                    <p class="mb-0 fw-semibold fs-14">Marcus Reynolds</p>
+                                    <p class="mb-0 fs-10 fw-semibold text-muted">Director, StreamFlix</p>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <span class="text-muted">"Our recommendation system increased viewer engagement by 22% in the first month. They took time to understand our unique content catalog and delivered a solution that feels personalized without being intrusive."</span>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="d-flex align-items-center">
+                                    <span class="text-muted">Rating: </span>
+                                    <span class="text-warning d-block ms-1">
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                        <i class="ri-star-fill"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="swiper-pagination mt-4"></div>
         </div>
